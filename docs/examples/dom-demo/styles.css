@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7f8;
+  margin: 0;
+  padding: 2rem;
+}
+
+.demo-card {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid #d6e4e6;
+  border-radius: 16px;
+}
+
+#status {
+  padding: 0.75rem 1rem;
+  border: 2px solid #d6e4e6;
+  border-radius: 12px;
+}
+
+#status.is-active {
+  color: #0f4f57;
+  background: #e7f4f5;
+}
