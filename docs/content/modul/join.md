@@ -90,7 +90,7 @@ Was passiert hier?
 - Das Resultat enthält Daten aus beiden Tabellen
 
 
-![alt text](image.png)
+![alt text](../../assets/images/image.png)
 
 -> Warum nun `bewertungen.kommentar`? Das ist weil nun beim JOIN haben wir mehr als nur eine Tabelle. Deshalb müssen wir noch sagen, **von wo** wir den Kommentar haben wollen.
 

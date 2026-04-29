@@ -4,7 +4,6 @@ Dieses Repository verwendet **eine** VitePress-App für die komplette Website:
 
 - Landingpage auf `/`
 - Moduldokumentation auf `/modul/`
-- Game-Doku auf `/jsgame/`
 
 Alles bleibt markdown-first, gemeinsam gestylt und lokal deploybar nach GitHub Pages.
 
@@ -17,8 +16,6 @@ npm run dev
 
 Weitere Befehle:
 
-- `npm run diagrams:build` exportiert alle `*.excalidraw.json`-Dateien nach SVG.
-- `npm run zips:build` erstellt für jeden Unterordner in `docs/projects/` eine gleichnamige `.zip`-Datei in `docs/assets/zips/`.
 - `npm run build` erstellt die statische Website lokal.
 - `npm run preview` startet eine lokale Vorschau der gebauten Website.
 - `npm run deploy` baut lokal und veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages`.
@@ -64,7 +61,7 @@ Wenn du später mehr Logik brauchst, erweitere diese Datei oder teile sie in wei
 Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 
 - Neue Modulkapitel legst du als Markdown-Dateien in `docs/content/modul/` oder in einem Unterordner davon an.
-- Top-Level-Bereiche wie `modul` oder `jsgame` liegen unter `docs/content/`.
+- Top-Level-Bereiche wie `modul` liegen unter `docs/content/`.
 - Bilder kannst du in `docs/assets/images/` speichern und direkt aus Markdown referenzieren.
 - Diagrammquellen können in `docs/assets/diagrams/` abgelegt werden.
 - Unterordner in `docs/projects/` werden vor jedem Build automatisch zu `.zip`-Dateien in `docs/assets/zips/` verpackt.
