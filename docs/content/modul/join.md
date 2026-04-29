@@ -26,14 +26,14 @@ Wir wollen diesen Befehl nun testen. Die Datenbank mit Produkten ist eingerichte
 
 Nun solltest du die folgende Tabelle angezeigt bekommen:
 
-TODO: Tabelle formatieren
-name	preis
-fondue	13
-Maggi	13
-pesto	3.9
-Pasta Barilla	3.5
-Spaghetti	2.5
-...
+| name           | preis |
+|----------------|-------|
+| fondue         | 13    |
+| Maggi          | 13    |
+| pesto          | 3.9   |
+| Pasta Barilla  | 3.5   |
+| Spaghetti      | 2.5   |
+| ...            | ...   |
 
 ### Aufagbe 2
 Zeige nun mit einem geeigneten SELECT Befehl `kommentar` und die `sterne` aller Bewertungen an. Diese sind in der Tabelle `bewertungen` gespeichert
@@ -48,12 +48,14 @@ FROM bewertungen;
 ```
 
 Tabelle:
-TODO: Tabelle formatieren
-kommentar	sterne
-Perfekt für Raclette-Abend!	5
-Guter Geschmack, schmilzt gut.	4
-Sehr knusprig und lecker.	5
-Etwas fettig, aber gut.	3
+
+| kommentar                         | sterne |
+|----------------------------------|--------|
+| Perfekt für Raclette-Abend!      | 5      |
+| Guter Geschmack, schmilzt gut.   | 4      |
+| Sehr knusprig und lecker.        | 5      |
+| Etwas fettig, aber gut.          | 3      |
+| ...                              | ...    |
 
 </details>
 
