@@ -1,51 +1,43 @@
-# Thema 3 - Select
+
+# Thema 3 - SELECT
 
 ## Auftrag
-Wir haben den folgenden Auftrag:
 
+Schreibe **5 SELECT Queries** und dokumentiere sie. Die Queries werden später auch vorgetragen.
 
-**Programmierung**
-Erarbeiten Sie sich **5** sinnvolle SELECT Queries. Die Queries werden dokumentiert (siehe unten) und später vorgetragen (siehe Vortrag). 
+**Anforderungen:**
+- 1 Query mit einem Filter (`WHERE`)
+- 2 Queries mit einer Aggregation (`SUM`, `AVG`, ...)
+- 2 Queries über mehrere Tabellen (`JOIN`)
 
-Für die 5 Queries haben wir die folgenden Anforderungen: 
-- **Ein Query** mit einem Filter (WHERE) 
-- **Zwei Queries** mit einer Aggretation (z.b SUM / AVG / ...) 
-- **Zwei Queries** über mehrere Tabellen mit JOIN
+Für jedes Query schreibst du 1–2 Sätze: Was macht der Befehl, und wann wäre er nützlich?
 
-**Dokumentation**
-Dokumentieren Sie die jedes Query und beschreiben Sie jeweils kurz (1-2 Sätze), in welcher Situation dieses wichtig ist und wo sie verwendet werden. 
+---
 
-## Vorgehen
+## Was ist SELECT?
 
-Öffne dein Projekt unter [https://sqlproject.coffee-journal.com](https://sqlproject.coffee-journal.com) und gehe zum [Query Editor](/projekt/sql-tool#query-editor). Geben wir wie immer unsere Befehle ein, um unsere Datenbank zu bearbeiten.
+Mit `SELECT` lesen wir Daten aus einer Tabelle aus – wir verändern nichts, wir schauen nur.
 
-Das Ziel ist es nun, **5** `SELECT` Queries (Befehle) zu schreiben. 
-
-## 1 - Ein Query mit einem Where Filter
-
-Beginnen wir mit dem ersten:
-**Ein Query** mit einem Filter (WHERE)
-
-Ich würde damit beginnen, ein SELECT Query zu schreiben:
-Select brauchen wir, um Daten **anzuzeigen**. Das heisst, dass wir die Einträge ausgeben und filtern, welche wir vorher im Thema 2 mit `INSERT` eingetragen haben.
-
-In meinem Beispiel habe ich eine Tabelle `produkte`. Mit dem folgenden Query (Befehl) sehe ich den `namen` und den `preis` aller produkte:
+Öffne den [Dein Projekt](https://sqlproject.coffee-journal.com) und gib im [Query Editor](/projekt/sql-tool#query-editor) folgendes ein:
 
 ```sql
 SELECT name, preis
 FROM produkte;
 ```
 
-⚡️ Adaptiere dieses Query nun in deinem Projekt. Schreibe es in den Query editor und teste es mit `Run Query`. Wenn du eine Tabelle siehst, dann ist das gut! Anbei eine kurze Erklärung:
+Dieser Befehl zeigt die Spalten `name` und `preis` aus der Tabelle `produkte`. Passe ihn auf deine eigene Tabelle an und klicke auf **Run Query**. Du solltest eine Tabelle mit Daten sehen.
 
-![alt text](../../assets/images/select-erklaerung.png)
+> 💡 Du weisst nicht mehr, wie deine Tabellen heissen? [Hier nachschauen.](/projekt/sql-tool#meine-tabellen)
 
+![Erklärung SELECT](/assets/images/select-erklaerung.png)
 
-💡 [Wie sehe ich meine Tabellen?](/projekt/sql-tool#meine-tabellen)
+---
 
-Mit diesem `SELECT` Query sehen wir **Alle** Einträge in unserer Tabelle. Wir wollen diese aber nun **filtern** sodass wir nur **gewisse** Einträge sehen, welche **eine Bedingung** erfüllen.
+## Query 1 – WHERE (Filter)
 
-Dazu müssen wir beim Query ein `WHERE` anfügen. In meinem Beispiel will ich alle Produkte sehen, dessen `preis` kleiner als 5 ist. Das heisst, alle Produkte, die weniger als 5 Franken kosten.
+Mit `WHERE` zeigen wir nur die Zeilen, die eine bestimmte Bedingung erfüllen.
+
+**Beispiel:** Alle Produkte, die weniger als 5 Franken kosten:
 
 ```sql
 SELECT name, preis
@@ -53,76 +45,102 @@ FROM produkte
 WHERE preis < 5;
 ```
 
-⚡️ In deinem Query, überlege dir nun, welchen [Filter](/modul/where) du einsetzen könntest und füge diesen bei deinem Query ein.
+⚡️ Überlege dir einen sinnvollen Filter für deine Tabelle und schreibe dein eigenes Query.
 
-✅ Fertig! Nun haben wir das erste Query mit `WHERE` erarbeitet. Dokumentiere dies nun in der docs Sektion und beschreibe in 2-3 Sätzen, was das Query macht. In meinem Fall wäre das zum Beispiel:
-
----
-
-Mit diesem Befehl sehe ich alle Produkte, die weniger als 5 Franken kosten.
-Dazu habe ich ein `WHERE` Statement benutzt mit dem Filter `preis < 5`. 
+✅ Dokumentiere: Was filtert dein Query, und wann wäre das nützlich?
 
 ---
 
-Sobald du das dokumentiert hast, kannst du den Editor wieder leerenund mit den nächsten zwei Queries (`JOIN`) fortfahren.
+## Query 2 & 3 – JOIN (zwei Tabellen verbinden)
 
-## 2 - Zwei Queries mit Join
+Mit `JOIN` kombinieren wir Daten aus zwei Tabellen. Das macht Sinn, wenn Daten zusammengehören, aber in verschiedenen Tabellen stehen – zum Beispiel Produkte und ihre Bewertungen.
 
-Nun wollen wir eine SELECT Abfrage über **zwei Tabellen** machen. Das können wir mit `JOIN` machen. Kurz gesagt nehmen wir Daten aus zwei verschiedenen Tabellen und fügen diese zusammen. Für mehr Infos, schaue dir [JOINS](/modul/join) an. 
-
-Wähle zwei Tabellen aus, welche unter einander in einer 1:n oder n:m Beziehung stehen. Bei mir sind das die Tabellen `produkte` und `bewertungen`.
-
-Überlege dir, welche Eigenschaften du in der Tabelle haben willst. Bei meinem Beispiel bieten sich zum Beispiel `name`, `preis` und `kommentar` an. Um nun eine Abfrage über beide Tabellen zu machen, schreiben wir folgenden Query:
+**Beispiel:**
 
 ```sql
-SELECT produkte.name AS produkte, produkte.preis AS preis, bewertungen.kommentar AS kommentar
+SELECT produkte.name AS produkt, produkte.preis AS preis, bewertungen.kommentar AS kommentar
 FROM produkte
 JOIN bewertungen ON produkte.id = bewertungen.produkt_id;
 ```
 
-Adaptiere dieses Query nun in deinem Projekt:
+Was passiert hier?
+- `FROM produkte` – wir starten mit der Tabelle `produkte`
+- `JOIN bewertungen` – wir fügen die Tabelle `bewertungen` hinzu
+- `ON produkte.id = bewertungen.produkt_id` – wir sagen, wie die zwei Tabellen zusammenhängen: die `id` aus `produkte` entspricht der `produkt_id` in `bewertungen`
+- `AS` benennt die Spalten im Ergebnis um
 
-Welche Eigenschaften möchtest du anzeigen?
--> schreibe dies bei `SELECT` zusammen mit der Tabelle, von welcher die Eigenschaft stammt. Verwende dazu `AS` um die Spalten im Ergebnis umzubenennen.
+⚡️ Wähle zwei Tabellen aus deinem Projekt, die miteinander verbunden sind. Schreibe zwei verschiedene JOIN Queries.
 
-```sql
-SELECT produkte.name AS produkte, produkte.preis AS preis, bewertungen.kommentar AS kommentar
-```
+✅ Dokumentiere beide Queries: Welche Tabellen verbindest du, und was zeigt das Ergebnis?
 
--> Schreibe nun bei `FROM` und `JOIN` die Tabellen, welche du verwenden möchtest.
--> Mit `ON` müssen wir sagen, welche Eigenschaft aus der ersten Tabelle mit welcher Eigenschaft aus der zweiten Tabelle verbunden ist.
+### N:M Beziehung (optional)
 
-Bei meinem Beispiel:
-
-```sql
-FROM produkte
-JOIN bewertungen ON produkte.id = bewertungen.produkt_id;
-```
-
-💡 Es ist egal, in welcher Reihenfolge die Tabellen aufgeführt werden. Solange die `ON` bedingung passt. In meinem Fall könnten wir auch produkte und bewertungen tauschen:
+Wenn zwei Tabellen über eine **Zwischentabelle** verbunden sind (n:m), brauchst du zwei `JOIN`s:
 
 ```sql
-FROM bewertungen
-JOIN produkte ON produkte.id = bewertungen.produkt_id;
-```
-
-### N:M Beziehung
-(Musst du nicht unbedingt machen. Wenn du zwei Queries mit JOIN schon hast, dann kannst du diesen Teil überspringen)
-
-Wenn du in deinen Daten eine n:m beziehung mit einer Zwischentabelle verbinden willst, musst du zwei JOINs verwenden. Gehe dazu gleich vor!
-
-1. Wähle die zwei Tabellen aus, welche unter einander in einer n:m beziehung stehen (die Zwischentabelle ist hierbei nicht gemeint!)
-2. Schaue, wie die Zwischentabelle heisst
-3. Füge diese drei Tabellen mit `JOIN` statements zusammen
-
-Bei meinem Beispiel will ich `kategorien` und `produkte` verbinden. Diese sind über die Zwischentabelle `produkt_kategorien` verbunden. Darum sieht mein Query wie folgt aus:
-
-```sql
-SELECT produkte.name AS produkte, produkte.preis AS preis, kategorien.name AS kategori
+SELECT produkte.name AS produkt, kategorien.name AS kategorie
 FROM produkte
 JOIN produkt_kategorien ON produkte.id = produkt_kategorien.produkt_id
 JOIN kategorien ON kategorien.id = produkt_kategorien.kategorie_id;
 ```
 
+Hier verbinden wir `produkte` und `kategorien` über die Zwischentabelle `produkt_kategorien`.
 
+---
 
+## Query 4 & 5 – Aggregation (Werte berechnen)
+
+Mit Aggregationsfunktionen berechnen wir Werte aus mehreren Zeilen – zum Beispiel eine Summe oder einen Durchschnitt. Das Ergebnis ist immer eine einzelne Zahl.
+
+Die wichtigsten Funktionen:
+
+| Funktion | Was sie macht |
+|----------|--------------|
+| `SUM` | Addiert alle Werte einer Spalte |
+| `AVG` | Berechnet den Durchschnitt |
+| `COUNT` | Zählt die Anzahl Zeilen |
+| `MAX` / `MIN` | Gibt den grössten / kleinsten Wert zurück |
+
+**Beispiele:**
+
+```sql
+-- Wie viel kosten alle Produkte zusammen?
+SELECT SUM(preis) AS gesamtpreis
+FROM produkte;
+
+-- Was ist der Durchschnittspreis?
+SELECT AVG(preis) AS durchschnittspreis
+FROM produkte;
+
+-- Wie viele Produkte gibt es?
+SELECT COUNT(*) AS anzahl_produkte
+FROM produkte;
+
+-- Was ist das teuerste und günstigste Produkt?
+SELECT MAX(preis) AS teuerster, MIN(preis) AS guenstigster
+FROM produkte;
+```
+
+⚡️ Schreibe zwei eigene Aggregations-Queries für deine Tabellen. Verwende dabei mindestens zwei verschiedene Funktionen.
+
+### GROUP BY – Gruppiert berechnen
+
+Manchmal wollen wir nicht einen Wert für die **gesamte** Tabelle, sondern einen Wert **pro Gruppe**. Dafür gibt es `GROUP BY`.
+
+**Beispiel:** Den Durchschnittspreis pro Kategorie berechnen:
+
+```sql
+SELECT kategorie, AVG(preis) AS durchschnittspreis
+FROM produkte
+GROUP BY kategorie;
+```
+
+Was passiert hier?
+- `GROUP BY kategorie` – die Tabelle wird nach `kategorie` gruppiert
+- `AVG(preis)` – der Durchschnitt wird **pro Gruppe** berechnet, nicht für alle Produkte zusammen
+
+Stell dir vor, du hast Produkte in den Kategorien „Getränke" und „Snacks". Ohne `GROUP BY` bekommst du **einen** Durchschnitt für alles. Mit `GROUP BY kategorie` bekommst du **einen Durchschnitt pro Kategorie**.
+
+⚡️ Überlege, welche Spalte in deiner Tabelle sich zum Gruppieren eignet, und schreibe ein Query mit `GROUP BY`.
+
+✅ Dokumentiere beide Queries: Was berechnen sie, und in welcher Situation wären diese Informationen nützlich?
