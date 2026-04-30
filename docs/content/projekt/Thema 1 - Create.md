@@ -1,7 +1,3 @@
-Here is the finished section for CREATE TABLE:
-
----
-
 ## Thema 1 – Datenschema programmieren
 
 ### Auftrag

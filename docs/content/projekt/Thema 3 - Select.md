@@ -1,4 +1,3 @@
-
 # Thema 3 - SELECT
 
 ## Auftrag
