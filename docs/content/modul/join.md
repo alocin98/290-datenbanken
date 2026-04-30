@@ -187,3 +187,19 @@ Heute hast du gelernt:
 - Wir können mehrere `JOIN`s aneinanderhängen
 - Damit wir wissen, von welcher Tabelle die Spalte kommt, schreiben wir bei `JOIN`s: `tabelle.spalte`
 - Mit `AS` kann man Spalten umbenennen
+
+
+
+
+
+
+
+
+
+
+08:45 - 09:00
+- Modulevaluation (Link auf Moodle unter allgemein)
+- Individuell arbeiten (Projekt / Join)
+
+09:00 - 10:05
+- Projektarbeit in Gruppen
